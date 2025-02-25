@@ -4,7 +4,7 @@ import { Hello1 } from "./Hello.tsx";
 function App() {
   return (
     <>
-      <Hello1 to="jay"></Hello1>
+      <Hello1 to="test"></Hello1>
     </>
   );
 }
