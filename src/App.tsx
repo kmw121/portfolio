@@ -1,10 +1,22 @@
 import "./App.css";
-import { Hello1 } from "./Hello.tsx";
-
+import { Canvas } from "@react-three/fiber";
+import ThreeElement from "./ThreeEelement";
 function App() {
   return (
     <>
-      <Hello1 to="test"></Hello1>
+      <Canvas
+        //orthographic
+        camera={{
+          zoom: 100,
+          near: 1,
+          far: 20,
+          fov: 75,
+          position: [5, 5, 0],
+        }}
+      >
+        <ThreeElement></ThreeElement>
+      </Canvas>
+      basic
     </>
   );
 }
