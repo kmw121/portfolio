@@ -24,7 +24,7 @@ function App() {
           near: 1,
           far: 20,
           fov: 75,
-          position: [5, 5, 0],
+          position: [5, 5, 5],
         }}
       >
         <color attach="background" args={[color.value]}></color>

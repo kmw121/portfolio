@@ -22,6 +22,8 @@ export default function ThreeElement() {
           Three.MathUtils.degToRad(45),
           0,
         ]}
+        position={[2, 0, 0]}
+        scale={[6, 1, 1]}
       >
         <boxGeometry></boxGeometry>
         <meshStandardMaterial color="red"></meshStandardMaterial>
