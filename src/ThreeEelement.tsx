@@ -7,6 +7,7 @@ export default function ThreeElement() {
   const boxRef = useRef<Three.Mesh>(null);
 
   useFrame((state, delta) => {
+    console.log(state);
     console.log(boxRef.current?.rotation.x);
     if (boxRef.current !== undefined && boxRef.current !== null) {
       boxRef.current.rotation.x += delta;
