@@ -1,5 +1,5 @@
 import * as Three from "three";
-import { useThree, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 export default function ThreeElement() {
   //   const { size, gl, scene, camera } = useThree();

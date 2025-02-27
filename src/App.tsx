@@ -1,7 +1,7 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import ThreeElement from "./ThreeEelement";
-import { OrbitControls, Segment } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { useControls } from "leva";
 function App() {
   const color = useControls({
