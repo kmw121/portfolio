@@ -1,6 +1,7 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import ThreeElement from "./ThreeEelement";
+//import TestThree from "./test";
 import { OrbitControls } from "@react-three/drei";
 import { useControls } from "leva";
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <axesHelper args={[grid2.axesLength]} />
         <gridHelper args={[10, grid.segment, "red", "blue"]}></gridHelper>
         <ThreeElement></ThreeElement>
+        {/* <TestThree></TestThree>*/}
       </Canvas>
       basic
     </>
