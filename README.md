@@ -19,3 +19,5 @@
 - **컨트롤러** (OrbitControls) 추가하여 마우스 상호작용 가능
 - **헬퍼** (CameraHelper) 추가하여 카메라 시야 시각적으로 표시
 - **위치** (Position) 및 **크기** (Scale) 변경 프로퍼티 추가하여 동적으로 객체 위치와 크기 조정 가능
+
+2.28 node.js build의 메모리를 4096mb 까지 설정(max-old-space-size=4096)하여 aws 메모리 오류 수정
