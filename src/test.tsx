@@ -9,6 +9,9 @@ export default function TestThree() {
 
   useFrame((state, delta) => {
     console.log(state);
+    console.log(size);
+    console.log(gl);
+    console.log(camera);
     console.log(boxRef.current?.rotation.x);
     if (boxRef.current !== undefined && boxRef.current !== null) {
       boxRef.current.rotation.x -= delta;

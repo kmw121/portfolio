@@ -1,10 +1,10 @@
 import * as Three from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { useThree } from "@react-three/fiber";
+//import { useThree } from "@react-three/fiber";
 import { Box, Sphere, Cone } from "@react-three/drei";
 export default function ThreeElement() {
-  const { size, gl, scene, camera } = useThree();
+  // const { size, gl, scene, camera } = useThree();
 
   const boxRef = useRef<Three.Mesh>(null);
   const groupRef = useRef<Three.Group>(null);
