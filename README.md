@@ -42,3 +42,6 @@
 ## 🌟 3.3 - Mesh의 다양한 추가 방법 구현 (Drei, Property)
 - **Drei** 라이브러리를 활용하여 다양한 방식으로 **Mesh** 객체 추가 및 설정
 - **Property**를 사용하여 **Mesh**의 속성 및 설정을 동적으로 변경 가능하도록 구현
+
+
+3.4 wireFrame 구현 mash끼리의 geometry 공유 로직 구현
