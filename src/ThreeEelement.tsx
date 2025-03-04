@@ -20,8 +20,7 @@ export default function ThreeElement() {
     depthSeg: { value: 1, min: 1, max: 10, step: 1 },
   });
 
-  useFrame((state, delta) => {
-    // console.log(state);
+  useFrame((_, delta) => {
     // console.log(boxRef.current?.rotation.x);
     if (boxRef.current !== undefined && boxRef.current !== null) {
       boxRef.current.rotation.x += delta;
