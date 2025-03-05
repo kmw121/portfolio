@@ -18,6 +18,16 @@ export default function ThreeElement() {
     widthSeg: { value: 1, min: 1, max: 10, step: 1 },
     heightSeg: { value: 1, min: 1, max: 10, step: 1 },
     depthSeg: { value: 1, min: 1, max: 10, step: 1 },
+    radius: { value: 1, min: 1, max: 10, step: 0.1 },
+    seg: { value: 32, min: 1, max: 100, step: 1 },
+    thetaStart: { value: 0, min: 0, max: 360, step: 0.1 },
+    thetaLength: { value: 360, min: 0, max: 360, step: 0.1 },
+  });
+  const circleControl = useControls({
+    radius: { value: 1, min: 1, max: 10, step: 0.1 },
+    seg: { value: 32, min: 1, max: 100, step: 1 },
+    thetaStart: { value: 0, min: 0, max: 360, step: 0.1 },
+    thetaLength: { value: 360, min: 0, max: 360, step: 0.1 },
   });
 
   useFrame((_, delta) => {
@@ -50,6 +60,18 @@ export default function ThreeElement() {
         ></boxGeometry>
         <meshStandardMaterial wireframe></meshStandardMaterial>
       </mesh>
+      <mesh position={[3, 3, 0]} ref={wireCopyRef}>
+        <circleGeometry
+          args={[
+            circleControl.radius,
+            circleControl.seg,
+            circleControl.thetaStart,
+            Three.MathUtils.degToRad(circleControl.thetaLength),
+          ]}
+        ></circleGeometry>
+        <meshStandardMaterial color="black"></meshStandardMaterial>
+      </mesh>
+
       <mesh position={[2, 0, 0]} ref={wireCopyRef}>
         <meshStandardMaterial color="brown"></meshStandardMaterial>
       </mesh>
