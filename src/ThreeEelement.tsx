@@ -46,7 +46,10 @@ export default function ThreeElement() {
   }, [boxControl]);
   return (
     <>
-      <directionalLight position={[5, 5, 5]}> </directionalLight>
+      <directionalLight position={[5, 5, 5]} intensity={5}>
+        {" "}
+      </directionalLight>
+      {/* <fog attach={"fog"} args={["blue", 3, 10]}></fog>*/}
       <mesh position={[2, 0, 0]} ref={wireRef}>
         <boxGeometry
           args={[
@@ -73,12 +76,26 @@ export default function ThreeElement() {
       </mesh>
 
       <mesh position={[2, 0, 0]} ref={wireCopyRef}>
-        <meshStandardMaterial color="brown"></meshStandardMaterial>
+        <meshBasicMaterial
+          //basic은 빛에 대한 영향을 받지 않음
+          color="green"
+          visible={true}
+          transparent={true}
+          opacity={0.7}
+          side={Three.BackSide} // 렌더링 되는 위치(기본 frontside)
+          alphaTest={0.46} //opatcity가 이 값이하면 안보임
+          depthTest={false} // false일 경우 거리상관없이 무조건 보이게함
+          depthWrite={false} // z버퍼에 이한 렌더링 무시
+          fog={false} // fog값에 이해서 영향을 받지않음
+        ></meshBasicMaterial>
       </mesh>
 
       <group ref={groupRef} rotation={[0, 0, 0]}>
         <mesh geometry={new Three.BoxGeometry(1, 1, 1)}>
-          <meshStandardMaterial color="blue"></meshStandardMaterial>
+          <meshLambertMaterial
+            color="blue"
+            emissive={"red"}
+          ></meshLambertMaterial>
         </mesh>
         <Box position={[-2, 0, 0]}>
           <meshStandardMaterial color="green"></meshStandardMaterial>
