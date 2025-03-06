@@ -97,12 +97,29 @@ export default function ThreeElement() {
             emissive={"red"}
           ></meshLambertMaterial>
         </mesh>
-        <Box position={[-2, 0, 0]}>
-          <meshStandardMaterial color="green"></meshStandardMaterial>
-        </Box>
-        <Sphere position={[0, -2, 0]}>
-          <meshStandardMaterial color="pink"></meshStandardMaterial>
+
+        {/* <mesh position={[-2, 0, 0]}>
+          <sphereGeometry>args={[1, 6, 20]}</sphereGeometry>
+          <meshPhongMaterial
+            color="green"
+            specular={"#fff"} // 반사광
+            shininess={5} // 반사광 범위
+            flatShading={true} // 단면적 렌더링
+          ></meshPhongMaterial>
+        </mesh> */}
+
+        <Sphere args={[1, 32, 20]} position={[-2, 0, 0]}>
+          <meshPhongMaterial
+            color="red"
+            specular={"#fff"} // 반사광
+            shininess={5} // 반사광 범위
+            flatShading={true} // 단면적 렌더링
+          ></meshPhongMaterial>
         </Sphere>
+        <Box position={[0, -2, 0]}>
+          <meshNormalMaterial></meshNormalMaterial>
+          {/* 백터에 따른 rgb 표현 */}
+        </Box>
         <Cone position={[0, 0, -2]}>
           <meshStandardMaterial color="brown"></meshStandardMaterial>
         </Cone>
