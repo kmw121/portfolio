@@ -2,7 +2,7 @@ import * as Three from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 //import { useThree } from "@react-three/fiber";
-import { Box, Sphere, Cone } from "@react-three/drei";
+import { Box, Sphere } from "@react-three/drei";
 import { useControls } from "leva";
 export default function ThreeElement() {
   // const { size, gl, scene, camera } = useThree();
@@ -120,9 +120,45 @@ export default function ThreeElement() {
           <meshNormalMaterial></meshNormalMaterial>
           {/* 백터에 따른 rgb 표현 */}
         </Box>
-        <Cone position={[0, 0, -2]}>
-          <meshStandardMaterial color="brown"></meshStandardMaterial>
-        </Cone>
+
+        {/* PBR(물리 기반 렌더링) standard, physical */}
+        <Sphere position={[0, 0, -2]}>
+          <meshStandardMaterial
+            color="gray"
+            roughness={1} //거칠기
+            metalness={0.2} //금속성
+            flatShading={false}
+          ></meshStandardMaterial>
+        </Sphere>
+
+        <mesh position={[0, 0, 2]}>
+          <torusKnotGeometry args={[0.5, 0.2]}></torusKnotGeometry>
+          <meshPhysicalMaterial
+            color="pink"
+            emissive={"black"}
+            visible={true}
+            alphaTest={0}
+            depthTest={true}
+            depthWrite={true}
+            fog={true}
+            side={Three.FrontSide}
+            roughness={0} //거칠기
+            metalness={0} //금속성
+            clearcoat={0} //표면코팅
+            clearcoatRoughness={0} //코팅거칠기
+            transparent={true}
+            transmission={1} //유리 투명도
+            thickness={1} // 유리두께
+            ior={1.5} // 굴절율
+            flatShading={false}
+          ></meshPhysicalMaterial>
+        </mesh>
+
+        <mesh position={[2, 0, 2]}>
+          <boxGeometry></boxGeometry>
+          <meshDepthMaterial></meshDepthMaterial>
+          {/* depth에 따라 색이 변함 */}
+        </mesh>
 
         <mesh
           ref={boxRef}
