@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 //import { useThree } from "@react-three/fiber";
 import { Box, Sphere } from "@react-three/drei";
 import { useControls } from "leva";
+import { useTexture } from "@react-three/drei";
 export default function ThreeElement() {
   // const { size, gl, scene, camera } = useThree();
 
@@ -29,6 +30,11 @@ export default function ThreeElement() {
     thetaStart: { value: 0, min: 0, max: 360, step: 0.1 },
     thetaLength: { value: 360, min: 0, max: 360, step: 0.1 },
   });
+
+  const matcap = useTexture("./imgs/matcap.jpg");
+  const tone = useTexture("./imgs/fiveTone.jpg");
+  tone.minFilter = Three.NearestFilter;
+  tone.magFilter = Three.NearestFilter;
 
   useFrame((_, delta) => {
     // console.log(boxRef.current?.rotation.x);
@@ -158,6 +164,18 @@ export default function ThreeElement() {
           <boxGeometry></boxGeometry>
           <meshDepthMaterial></meshDepthMaterial>
           {/* depth에 따라 색이 변함 */}
+        </mesh>
+
+        <mesh position={[2, 2, 0]}>
+          <boxGeometry></boxGeometry>
+          <meshMatcapMaterial matcap={matcap}></meshMatcapMaterial>
+          {/* matcap 재질로 설정 */}
+        </mesh>
+
+        <mesh position={[0, 2, 2]}>
+          <torusKnotGeometry args={[0.5, 0.2]}></torusKnotGeometry>
+          <meshToonMaterial gradientMap={tone} color="pink"></meshToonMaterial>
+          {/* tone에 따른 표현 (만화처럼 표현) */}
         </mesh>
 
         <mesh
