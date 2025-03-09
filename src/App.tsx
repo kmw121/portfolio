@@ -1,13 +1,14 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import ThreeElement from "./ThreeEelement";
+//import MaterialTest from "./MaterialTest";
+import LightTest from "./LightTest";
 //import TestThree from "./test";
 import { OrbitControls } from "@react-three/drei";
 import { useControls } from "leva";
 
 function App() {
   const color = useControls({
-    value: "white",
+    value: "black",
   });
 
   const grid = useControls({
@@ -33,7 +34,8 @@ function App() {
         <OrbitControls></OrbitControls>
         <axesHelper args={[grid2.axesLength]} />
         <gridHelper args={[10, grid.segment, "red", "blue"]}></gridHelper>
-        <ThreeElement></ThreeElement>
+        {/* <MaterialTest></MaterialTest> */}
+        <LightTest></LightTest>
         {/* <TestThree></TestThree>*/}
       </Canvas>
       basic
