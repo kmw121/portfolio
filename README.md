@@ -48,3 +48,4 @@
 3.5 circleGeometry 추가, meshBasicMaterial meshLambertMaterial property 테스트, aws npm build 오류 가상메모리 추가하여 해결
 3.6 meshPhongMaterial property 테스트, meshNormalMaterial 추가 
 3.7 meshStandardMaterial, meshPhysicalMaterial property 테스트(금속과 유리재질의 mesh 구현)
+3.8 meshMatcapMaterial, meshToonMateriall 추가 (matcap 설정 재질 및 만화적 표현 구현) 
