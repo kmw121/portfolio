@@ -43,10 +43,44 @@
 - **Drei** 라이브러리를 활용하여 다양한 방식으로 **Mesh** 객체 추가 및 설정
 - **Property**를 사용하여 **Mesh**의 속성 및 설정을 동적으로 변경 가능하도록 구현
 
+---
 
-3.4 wireFrame 구현 mash끼리의 geometry 공유 로직 구현
-3.5 circleGeometry 추가, meshBasicMaterial meshLambertMaterial property 테스트, aws npm build 오류 가상메모리 추가하여 해결
-3.6 meshPhongMaterial property 테스트, meshNormalMaterial 추가 
-3.7 meshStandardMaterial, meshPhysicalMaterial property 테스트(금속과 유리재질의 mesh 구현)
-3.8 meshMatcapMaterial, meshToonMateriall 추가 (matcap 설정 재질 및 만화적 표현 구현) 
-3.9 ambientLight, hemisphereLight 추가 (간접광 구현) 
+## 🌟 3.4 - Wireframe 구현 및 Mesh 간 Geometry 공유 로직 구현
+- **Wireframe** 구현하여 객체의 외곽선을 표시
+- **Mesh** 간의 **Geometry**를 공유하는 로직 추가
+
+---
+
+## 🌟 3.5 - CircleGeometry 추가, MeshBasicMaterial 및 MeshLambertMaterial Property 테스트
+- **CircleGeometry** 객체 추가
+- **MeshBasicMaterial** 및 **MeshLambertMaterial**의 속성 테스트
+
+---
+
+## 🌟 3.6 - MeshPhongMaterial Property 테스트 및 MeshNormalMaterial 추가
+- **MeshPhongMaterial**의 속성 테스트
+- **MeshNormalMaterial** 추가하여 표면의 법선 벡터 기반 재질 구현
+
+---
+
+## 🌟 3.7 - MeshStandardMaterial 및 MeshPhysicalMaterial Property 테스트
+- **MeshStandardMaterial**과 **MeshPhysicalMaterial**의 속성 테스트
+- **금속** 및 **유리** 재질의 **Mesh** 구현
+
+---
+
+## 🌟 3.8 - MeshMatcapMaterial 및 MeshToonMaterial 추가
+- **MeshMatcapMaterial** 추가하여 **Matcap 설정**을 통해 특정 재질 구현
+- **MeshToonMaterial** 추가하여 **만화적 표현**을 구현
+
+---
+
+## 🌟 3.9 - AmbientLight, HemisphereLight 추가 (간접광 구현)
+- **AmbientLight**와 **HemisphereLight** 추가하여 **간접광**을 구현
+
+---
+
+## 🌟 3.10 - DirectionalLight, PointLight, SpotLight 추가 및 프로퍼티 테스트
+- **DirectionalLight**, **PointLight**, **SpotLight** 추가
+- 각 **Light**의 속성 및 동작 테스트
+- **LightHelper** 구현하여 빛의 방향 및 범위 시각화
