@@ -2,9 +2,8 @@ import * as Three from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 //import { useThree } from "@react-three/fiber";
-import { Box, Sphere } from "@react-three/drei";
+import { Box, Sphere, useHelper, useTexture } from "@react-three/drei";
 import { useControls } from "leva";
-import { useTexture } from "@react-three/drei";
 export default function LightTest() {
   // const { size, gl, scene, camera } = useThree();
 
@@ -49,13 +48,47 @@ export default function LightTest() {
       wireCopyRef.current.geometry = wireRef.current.geometry;
     }
   }, [boxControl]);
+  const dLight = useRef<Three.DirectionalLight>(null!);
+  useHelper(dLight, Three.DirectionalLightHelper);
+
+  const sLight = useRef<Three.DirectionalLight>(null!);
+  useHelper(sLight, Three.SpotLightHelper);
+
   return (
     <>
       {/* ambientLight = 간접광 
           hemisphereLight = 주변광 (색2개), 돔라이트(하늘색깔 조명, 바닥색깔 조명)
+          directionalLight = 방향이 있는 햇빛같은 광원
+          pointLight = 백열등 같이 전체적으로 퍼지는 빛
+          spotLight = 무대 조명
       */}
       {/* <ambientLight color={"blue"} intensity={10}></ambientLight>  */}
-      <hemisphereLight args={["blue", "yellow", 5]}></hemisphereLight>
+      {/* <hemisphereLight args={["blue", "yellow", 5]}></hemisphereLight> */}
+      {/* <directionalLight
+        ref={dLight}
+        color={"#fff"}
+        position={[5, 5, 5]}
+        intensity={5}
+        target-position={[0, 5, 2]}
+      ></directionalLight>
+      */}
+      {/* <pointLight
+        color={"#fff"}
+        position={[5, 5, 5]}
+        intensity={100}
+        distance={60}
+      ></pointLight> */}
+      <spotLight
+        ref={sLight}
+        color={"#fff"}
+        position={[0, 5, 0]}
+        intensity={300}
+        distance={10}
+        angle={Three.MathUtils.degToRad(10)}
+        target-position={[0, 0, 0]}
+        penumbra={0.8}
+      ></spotLight>
+
       <mesh
         rotation={[Three.MathUtils.degToRad(-90), 0, 0]}
         position={[0, -1, 0]}
