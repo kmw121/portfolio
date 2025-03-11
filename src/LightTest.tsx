@@ -2,7 +2,13 @@ import * as Three from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 //import { useThree } from "@react-three/fiber";
-import { Box, Sphere, useHelper, useTexture } from "@react-three/drei";
+import {
+  Box,
+  Environment,
+  Sphere,
+  useHelper,
+  useTexture,
+} from "@react-three/drei";
 import { useControls } from "leva";
 export default function LightTest() {
   // const { size, gl, scene, camera } = useThree();
@@ -88,6 +94,12 @@ export default function LightTest() {
         target-position={[0, 0, 0]}
         penumbra={0.8}
       ></spotLight>
+
+      <Environment
+        files={"./imgs/hdr1.hdr"}
+        blur={0.01}
+        background
+      ></Environment>
 
       <mesh
         rotation={[Three.MathUtils.degToRad(-90), 0, 0]}
