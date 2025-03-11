@@ -84,3 +84,5 @@
 - **DirectionalLight**, **PointLight**, **SpotLight** 추가
 - 각 **Light**의 속성 및 동작 테스트
 - **LightHelper** 구현하여 빛의 방향 및 범위 시각화
+
+3.11 Environment 추가 (백그라운드 이미지 설정)
