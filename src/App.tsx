@@ -23,6 +23,7 @@ function App() {
     <>
       <Canvas
         //orthographic
+        shadows
         camera={{
           near: 1,
           far: 20,

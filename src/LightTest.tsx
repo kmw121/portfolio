@@ -64,27 +64,34 @@ export default function LightTest() {
     <>
       {/* ambientLight = 간접광 
           hemisphereLight = 주변광 (색2개), 돔라이트(하늘색깔 조명, 바닥색깔 조명)
+          (간접광은 shadow를 만들 수 없음)
           directionalLight = 방향이 있는 햇빛같은 광원
           pointLight = 백열등 같이 전체적으로 퍼지는 빛
           spotLight = 무대 조명
       */}
       {/* <ambientLight color={"blue"} intensity={10}></ambientLight>  */}
       {/* <hemisphereLight args={["blue", "yellow", 5]}></hemisphereLight> */}
-      {/* <directionalLight
+      <directionalLight
+        castShadow
+        shadow-camera-top={10}
+        shadow-camera-bottom={10}
+        shadow-camera-left={10}
+        shadow-camera-right={10}
+        shadow-mapSize={[1024, 1024]} // 그림자 해상도
         ref={dLight}
         color={"#fff"}
         position={[5, 5, 5]}
         intensity={5}
-        target-position={[0, 5, 2]}
+        target-position={[0, 0, 0]}
       ></directionalLight>
-      */}
+
       {/* <pointLight
         color={"#fff"}
         position={[5, 5, 5]}
         intensity={100}
         distance={60}
       ></pointLight> */}
-      <spotLight
+      {/* <spotLight
         ref={sLight}
         color={"#fff"}
         position={[0, 5, 0]}
@@ -93,7 +100,7 @@ export default function LightTest() {
         angle={Three.MathUtils.degToRad(10)}
         target-position={[0, 0, 0]}
         penumbra={0.8}
-      ></spotLight>
+      ></spotLight> */}
 
       <Environment
         files={"./imgs/hdr1.hdr"}
@@ -104,6 +111,7 @@ export default function LightTest() {
       <mesh
         rotation={[Three.MathUtils.degToRad(-90), 0, 0]}
         position={[0, -1, 0]}
+        receiveShadow
       >
         <planeGeometry args={[15, 15]}></planeGeometry>
         <meshStandardMaterial
@@ -111,7 +119,7 @@ export default function LightTest() {
           side={Three.DoubleSide}
         ></meshStandardMaterial>
       </mesh>
-      <mesh position={[3, 3, 0]} ref={wireCopyRef}>
+      <mesh position={[3, 3, 0]} ref={wireCopyRef} castShadow>
         <circleGeometry
           args={[
             circleControl.radius,
@@ -123,7 +131,11 @@ export default function LightTest() {
         <meshStandardMaterial color="black"></meshStandardMaterial>
       </mesh>
       <group ref={groupRef} rotation={[0, 0, 0]}>
-        <mesh geometry={new Three.BoxGeometry(1, 1, 1)}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={new Three.BoxGeometry(1, 1, 1)}
+        >
           <meshLambertMaterial color="blue"></meshLambertMaterial>
         </mesh>
 
@@ -137,14 +149,19 @@ export default function LightTest() {
           ></meshPhongMaterial>
         </mesh> */}
 
-        <Sphere args={[1, 32, 20]} position={[-2, 0, 0]}>
+        <Sphere
+          receiveShadow
+          castShadow
+          args={[1, 32, 20]}
+          position={[-2, 0, 0]}
+        >
           <meshPhongMaterial
             flatShading={true} // 단면적 렌더링
           ></meshPhongMaterial>
         </Sphere>
 
         {/* PBR(물리 기반 렌더링) standard, physical */}
-        <Sphere position={[0, 0, -2]}>
+        <Sphere castShadow position={[0, 0, -2]}>
           <meshStandardMaterial
             color="gray"
             roughness={1} //거칠기
@@ -153,7 +170,7 @@ export default function LightTest() {
           ></meshStandardMaterial>
         </Sphere>
 
-        <mesh position={[0, 0, 2]}>
+        <mesh castShadow position={[0, 0, 2]}>
           <torusKnotGeometry args={[0.5, 0.2]}></torusKnotGeometry>
           <meshPhysicalMaterial
             color="pink"
@@ -176,7 +193,7 @@ export default function LightTest() {
           ></meshPhysicalMaterial>
         </mesh>
 
-        <mesh position={[2, 0, 0]}>
+        <mesh castShadow position={[2, 0, 0]}>
           <torusKnotGeometry args={[0.5, 0.2]}></torusKnotGeometry>
           <meshToonMaterial gradientMap={tone} color="pink"></meshToonMaterial>
           {/* tone에 따른 표현 (만화처럼 표현) */}
