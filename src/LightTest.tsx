@@ -2,13 +2,7 @@ import * as Three from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 //import { useThree } from "@react-three/fiber";
-import {
-  Box,
-  Environment,
-  Sphere,
-  useHelper,
-  useTexture,
-} from "@react-three/drei";
+import { Environment, Sphere, useHelper, useTexture } from "@react-three/drei";
 import { useControls } from "leva";
 export default function LightTest() {
   // const { size, gl, scene, camera } = useThree();
