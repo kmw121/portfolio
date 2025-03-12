@@ -86,3 +86,4 @@
 - **LightHelper** 구현하여 빛의 방향 및 범위 시각화
 
 3.11 Environment 추가 (백그라운드 이미지 설정)
+3.12 shadow 구현 (mesh와 light의 castShadow 및 mesh의 receiveShadow 구현)
