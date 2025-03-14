@@ -88,3 +88,4 @@
 3.11 Environment 추가 (백그라운드 이미지 설정)
 3.12 shadow 구현 (mesh와 light의 castShadow 및 mesh의 receiveShadow 구현)
 3.13 interaction 구현(click, over, out, enter, leave 이벤트로 스케일 및 색상 변화 구현)
+3.14 raycaster방지 코드 추가(event bubbling과 비슷한 현상 방지)
