@@ -9,7 +9,8 @@ export default function InteractionTest() {
       Math.random(),
       Math.random()
     );
-
+    e.stopPropagation();
+    // envent bubbling과 비슷한 raycaster를 막기 위해 사용
     if (Array.isArray(mesh.material)) {
       mesh.material.forEach((mat) => {
         if (mat instanceof Three.MeshStandardMaterial) {
@@ -23,16 +24,16 @@ export default function InteractionTest() {
     }
   }
 
-  function overFunction(e: ThreeEvent<MouseEvent>) {
-    const mesh = e.object as Three.Mesh;
-    mesh.scale.set(Math.random(), Math.random(), Math.random());
-  }
+  // function overFunction(e: ThreeEvent<MouseEvent>) {
+  //   const mesh = e.object as Three.Mesh;
+  //   mesh.scale.set(Math.random(), Math.random(), Math.random());
+  // }
 
-  function outFunction(e: ThreeEvent<MouseEvent>) {
-    const mesh = e.object as Three.Mesh;
+  // function outFunction(e: ThreeEvent<MouseEvent>) {
+  //   const mesh = e.object as Three.Mesh;
 
-    mesh.scale.set(1, 1, 1);
-  }
+  //   mesh.scale.set(1, 1, 1);
+  // }
   return (
     <>
       <ambientLight></ambientLight>
@@ -41,7 +42,7 @@ export default function InteractionTest() {
           onClick={(e) => {
             clickFunction(e);
           }}
-          position={[1, 0, 0]}
+          position={[0, 0, 0]}
           //   onContextMenu={(e) => {
           //     console.log("context menu");
           //     console.log(e);
@@ -62,25 +63,25 @@ export default function InteractionTest() {
           //     console.log("down");
           //     console.log(e);
           //   }}
-          onPointerOver={(e) => {
-            console.log("over");
+          // onPointerOver={(e) => {
+          //   console.log("over");
 
-            overFunction(e);
-          }}
-          onPointerOut={(e) => {
-            console.log("out");
-            outFunction(e);
-          }}
+          //   overFunction(e);
+          // }}
+          // onPointerOut={(e) => {
+          //   console.log("out");
+          //   outFunction(e);
+          // }}
           //over와 out은 자식요소까지 이벤트 적용
 
-          onPointerEnter={(e) => {
-            console.log("enter");
-            overFunction(e);
-          }}
-          onPointerLeave={(e) => {
-            console.log("leave");
-            outFunction(e);
-          }}
+          // onPointerEnter={(e) => {
+          //   console.log("enter");
+          //   overFunction(e);
+          // }}
+          // onPointerLeave={(e) => {
+          //   console.log("leave");
+          //   outFunction(e);
+          // }}
           //enter와 leave는 부모요소만 적용
 
           //   onPointerMove={(e) => {
@@ -98,10 +99,24 @@ export default function InteractionTest() {
         >
           <boxGeometry></boxGeometry>
           <meshStandardMaterial></meshStandardMaterial>
-          <mesh scale={[2, 2, 2]} position={[1, 0, 0]}>
-            <boxGeometry></boxGeometry>
-            <meshStandardMaterial color={"red"}></meshStandardMaterial>
-          </mesh>
+        </mesh>
+        <mesh
+          onClick={(e) => {
+            clickFunction(e);
+          }}
+          position={[2, 0, 0]}
+        >
+          <boxGeometry></boxGeometry>
+          <meshStandardMaterial></meshStandardMaterial>
+        </mesh>
+        <mesh
+          onClick={(e) => {
+            clickFunction(e);
+          }}
+          position={[4, 0, 0]}
+        >
+          <boxGeometry></boxGeometry>
+          <meshStandardMaterial></meshStandardMaterial>
         </mesh>
       </directionalLight>
     </>
